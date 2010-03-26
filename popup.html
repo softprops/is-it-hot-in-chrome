@@ -9,20 +9,21 @@
       a:hover { color:#F87EE4; }
     </style>
     <script>
-      function template() {
-        return "currently <strong>{cond}</strong> @ <strong>{f}</strong>° F <span id=\"cel\">({c}°  C)</span></span>";
-      }
-      function render(w) {
-        return template()
-         .replace("{cond}", w.current_condition.condition)
-         .replace("{f}", w.current_condition.fahrenheit)
-         .replace("{c}", w.current_condition.celsius);
-      }
+      var template = (function(){
+        var txt = "currently <strong>{cond}</strong> @ <strong>{f}</strong>° F <span id=\"cel\">({c}°  C)</span></span>";
+        return {
+          render: function(w) {
+            return txt.replace("{cond}", w.current_condition.condition)
+             .replace("{f}", w.current_condition.fahrenheit)
+             .replace("{c}", w.current_condition.celsius);
+          }
+        };
+      })();
       
       function setWeather(w) {      
         document.getElementById("loc").innerHTML = w.forecast_information.city;
         var c = document.createElement("div");
-        c.innerHTML = render(w);
+        c.innerHTML = template.render(w);
         document.body.appendChild(c);
       }
       function getWeather() {
