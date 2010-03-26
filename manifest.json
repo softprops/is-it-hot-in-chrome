@@ -4,7 +4,6 @@
   "description": "is it hot in here or is it just me?",
   "background_page": "bg.html",
   "permissions": [
-    "http://isithotinhereorisitjust.me/",
     "http://wmwm.us/"
   ],
   "browser_action": {
