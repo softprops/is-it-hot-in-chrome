@@ -8,9 +8,13 @@ install google [chrome](http://www.google.com/support/chrome/bin/answer.py?hl=en
     cd ~/some/dir
     git clone git@github.com:softprops/is-it-hot-in-chrome.git
 
-open ~/some/dir/is-it-hot-in-chrome
 navigate to [chrome://extensions/](chrome://extensions/)
+
+open ~/some/dir/is-it-hot-in-chrome
+
 click the `Load unpacked extension...` button
+
+play
 
 ## contribute
 
