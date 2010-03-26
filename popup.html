@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <style>
+      body { font-family:helvetica; color:#333; width:300px; }
+      #loc { font-weight:bold; }
+      #temp { font-size:smaller; }
+      #cel { color:#ccc; }
+      a:link, a:visited { margin:1em; color:#eee; text-decoration:none; }
+      a:hover { color:#F87EE4; }
+    </style>
+    <script>
+      function template() {
+        return "currently <strong>{cond}</strong> @ <strong>{f}</strong>° F <span id=\"cel\">({c}°  C)</span></span>";
+      }
+      function render(w) {
+        return template()
+         .replace("{cond}", w.current_condition.condition)
+         .replace("{f}", w.current_condition.fahrenheit)
+         .replace("{c}", w.current_condition.celsius);
+      }
+      
+      function setWeather(w) {      
+        document.getElementById("loc").innerHTML = w.forecast_information.city;
+        var c = document.createElement("div");
+        c.innerHTML = render(w);
+        document.body.appendChild(c);
+      }
+      function getWeather() {
+        var req = new XMLHttpRequest();
+        req.open(
+          "GET",
+          "http://wmwm.us/weather/default",
+          true
+        );
+        req.onload = function() {
+          setWeather(JSON.parse(req.responseText));
+        };
+        req.send(null);
+      }
+      getWeather();
+    </script>
+  </head>
+  <body>
+    Is it hot in <span id="loc">here</span>?
+  </body>
+</html>

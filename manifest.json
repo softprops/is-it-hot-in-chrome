@@ -1,0 +1,14 @@
+{
+  "name": "Is it hot in here?",
+  "version": "0.1.0",
+  "description": "is it hot in here or is it just me?",
+  "background_page": "bg.html",
+  "permissions": [
+    "http://isithotinhereorisitjust.me/",
+    "http://wmwm.us/"
+  ],
+  "browser_action": {
+    "default_icon": "icon.png",
+    "popup": "popup.html"
+  }
+}
