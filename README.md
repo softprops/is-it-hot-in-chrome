@@ -8,6 +8,8 @@ install google [chrome](http://www.google.com/support/chrome/bin/answer.py?hl=en
     cd ~/some/dir
     git clone git@github.com:softprops/is-it-hot-in-chrome.git
 
+make sure chrome is using utf-8 (under Preferences > Under the Hood > Web Content > Change font and language settings > Default Encoding)
+
 navigate to [chrome://extensions/](chrome://extensions/)
 
 open ~/some/dir/is-it-hot-in-chrome
