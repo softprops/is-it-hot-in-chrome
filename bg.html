@@ -9,6 +9,7 @@
       );
       req.onload = function() {
         var w = JSON.parse(req.responseText);
+        if(w.current_condition === undefined) return;
         var tempf = w.current_condition.fahrenheit+"°";
         chrome.browserAction.setBadgeBackgroundColor({color:[
           255, 29, 146, 255

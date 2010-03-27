@@ -10,20 +10,27 @@
     </style>
     <script>
       var template = (function(){
-        var txt = "currently <strong>{cond}</strong> @ <strong>{f}</strong>° F <span id=\"cel\">({c}°  C)</span></span>";
+        var cond = "currently <strong>{cond}</strong> @ <strong>{f}</strong>° F <span id=\"cel\">({c}°  C)</span></span>";
+        var unknownCond = "you tell me";
         return {
-          render: function(w) {
-            return txt.replace("{cond}", w.current_condition.condition)
-             .replace("{f}", w.current_condition.fahrenheit)
-             .replace("{c}", w.current_condition.celsius);
+          renderCondition: function(w) {
+            var c =  w.current_condition;
+            return c === undefined ? unknownCond : 
+              cond.replace("{cond}", c.condition)
+                .replace("{f}",c.fahrenheit)
+                .replace("{c}", c.celsius);
+          },
+          renderCity: function(w) {
+             var info = w.forecast_information;
+             return info === undefined ? "where" : info.city;
           }
         };
       })();
       
-      function setWeather(w) {      
-        document.getElementById("loc").innerHTML = w.forecast_information.city;
+      function setWeather(w) {
+        document.getElementById("loc").innerHTML = template.renderCity(w);
         var c = document.createElement("div");
-        c.innerHTML = template.render(w);
+        c.innerHTML = template.renderCondition(w);
         document.body.appendChild(c);
       }
       function getWeather() {
