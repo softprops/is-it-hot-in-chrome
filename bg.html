@@ -19,5 +19,6 @@
       req.send(null);
     }
     getWeather();
+    setInterval("getWeather()", 1000*60*60 /* check hourly */);
   </script>
 </html>
